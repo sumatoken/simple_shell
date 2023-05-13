@@ -4,6 +4,8 @@
 #include <unistd.h>
 
 size_t _strlen(char *str);
-char *_strcpy(char *dest, char *src);
+bool _is_whitespace(char *str);
+char *read_input(void);
+void execute_command(char *command);
 
 #endif

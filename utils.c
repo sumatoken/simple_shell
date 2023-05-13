@@ -1,5 +1,5 @@
+#include <stdbool.h>
 #include "utils.h"
-
 /**
  * _strlen - counts the length of the string
  * @str: string
@@ -15,19 +15,20 @@ size_t _strlen(char *str)
 }
 
 /**
- * _strcpy - string copy
- * @dest: dest string
- * @src: source string
+ * _is_whitespace - Check if a string equals only whitespaces
+ * @description: Iterates over every single character of a string and check if it a whitespace
+ * @str: String to check
  * Return: string
  */
-char *_strcpy(char *dest, char *src)
+bool _is_whitespace(char *str)
 {
-	char *ptr = dest;
-
-	while (*src)
-		*ptr++ = *src++;
-
-	*ptr = *src;
-
-	return (dest);
+	int i;
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] != ' ' && str[i] != '\t')
+		{
+			return false;
+		}
+	}
+	return true;
 }

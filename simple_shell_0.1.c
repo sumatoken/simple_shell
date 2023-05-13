@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <string.h>
+#include "utils.h"
 #include "main.h"
 
 #define INITIAL_BUFFER_SIZE 1024
@@ -49,7 +50,7 @@ char *read_input(void)
 		command[strlen(command) - 1] = '\0';
 	}
 
-	return (command);
+		return (command);
 }
 
 /**
@@ -114,6 +115,12 @@ void simple_shell_0_1(void)
 		if (command == NULL)
 		{
 			return;
+		}
+
+		if (_is_whitespace(command))
+		{
+			free(command);
+			continue;
 		}
 
 		execute_command(command);
