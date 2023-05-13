@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/hsh.dir/helloWorld.c.o -o hsh 
