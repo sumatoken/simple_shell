@@ -50,7 +50,7 @@ char *read_input(void)
 		command[strlen(command) - 1] = '\0';
 	}
 
-		return (command);
+	return (command);
 }
 
 /**
