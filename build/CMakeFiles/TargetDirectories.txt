@@ -1,3 +1,0 @@
-/home/xmta/Desktop/ALX/shell/build/CMakeFiles/hsh.dir
-/home/xmta/Desktop/ALX/shell/build/CMakeFiles/edit_cache.dir
-/home/xmta/Desktop/ALX/shell/build/CMakeFiles/rebuild_cache.dir
