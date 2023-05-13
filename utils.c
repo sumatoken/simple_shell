@@ -7,12 +7,11 @@
  */
 size_t _strlen(char *str)
 {
-    size_t length = 0;
+	size_t length = 0;
 
-    while (*str++)
-        length++;
-
-    return (length);
+	while (*str++)
+		length++;
+	return (length);
 }
 
 /**
@@ -23,11 +22,12 @@ size_t _strlen(char *str)
  */
 char *_strcpy(char *dest, char *src)
 {
-    char *ptr = dest;
+	char *ptr = dest;
 
-    while (*src)
-        *ptr++ = *src++;
-    *ptr = *src;
+	while (*src)
+		*ptr++ = *src++;
 
-    return (dest);
+	*ptr = *src;
+
+	return (dest);
 }
