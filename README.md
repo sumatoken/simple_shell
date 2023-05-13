@@ -20,7 +20,7 @@ This project is a simple UNIX command interpreter written in C. The shell works 
 
 2. Navigate to the project directory:
     ```sh
-    cd simple-shell
+    cd simple_shell
     ```
 
 3. Create a new directory for the build files:
