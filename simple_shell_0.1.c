@@ -9,6 +9,8 @@
 
 #define INITIAL_BUFFER_SIZE 1024
 
+extern char **environ;
+
 /**
  * read_input - Prompts the user and gets their input
  *
@@ -45,16 +47,16 @@ char *read_input(void)
 		return (NULL);
 	}
 
-	if (strlen(command) > 0 && command[strlen(command) - 1] == '\n')
+	if (_strlen(command) > 0 && command[_strlen(command) - 1] == '\n')
 	{
-		command[strlen(command) - 1] = '\0';
+		command[_strlen(command) - 1] = '\0';
 	}
 
 	return (command);
 }
 
 /**
- * execute_command - Executes a command received from the user
+ * execute_command - Executes a command received from the user with execve
  * @command: The command to execute
  *
  * Description: This function forks a new process and executes the
@@ -82,7 +84,7 @@ void execute_command(char *command)
 	}
 	if (pid == 0)
 	{
-		execve(command, args, NULL);
+		execve(command, args, environ);
 		perror("execv");
 		exit(EXIT_FAILURE);
 	}
