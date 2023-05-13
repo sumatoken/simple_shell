@@ -10,7 +10,6 @@
 
 int main(void)
 {
-	printf("Hello World!\n");
 	simple_shell_0_1();
 	return (0);
 }
