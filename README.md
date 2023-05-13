@@ -15,7 +15,7 @@ This project is a simple UNIX command interpreter written in C. The shell works 
 
 1. Clone the repository to your local machine:
     ```sh
-    git clone https://github.com/your-username/simple-shell.git
+    git clone https://github.com/sumatoken/simple_shell.git
     ```
 
 2. Navigate to the project directory:
