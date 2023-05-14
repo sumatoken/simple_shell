@@ -10,6 +10,7 @@
 #include "main.h"
 
 #define INITIAL_BUFFER_SIZE 1024
+#define INPUT_EOF ((char *)-1)
 
 extern char **environ;
 
@@ -38,13 +39,17 @@ char *read_input(void)
 	write(STDOUT_FILENO, "$ ", 2);
 
 	bytesRead = read(STDIN_FILENO, command, INITIAL_BUFFER_SIZE - 1);
-	if (bytesRead >= 0)
+	if (bytesRead > 0)
 	{
 		command[bytesRead] = '\0';
 	}
+	else if (bytesRead == 0 && command[0] == '\0')
+	{
+		free(command);
+		exit(EXIT_SUCCESS);
+	}
 	else
 	{
-		write(2, "Read error\n", 11);
 		free(command);
 		return (NULL);
 	}
@@ -112,6 +117,7 @@ void simple_shell_0_1(void)
 {
 	bool status = true;
 	struct stat st;
+
 	while (status == true)
 	{
 		char *command = read_input();
@@ -120,7 +126,6 @@ void simple_shell_0_1(void)
 		{
 			return;
 		}
-
 		if (_is_whitespace(command))
 		{
 			free(command);
