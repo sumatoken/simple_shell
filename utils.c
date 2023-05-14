@@ -16,19 +16,24 @@ size_t _strlen(char *str)
 
 /**
  * _is_whitespace - Check if a string equals only whitespaces
- * @description: Iterates over every single character of a string and check if it a whitespace
+ *
  * @str: String to check
- * Return: string
+ *
+ * Description: Iterates over every single character of a string and check if
+ *				it is a whitespace.
+ *
+ * Return: boolean
  */
 bool _is_whitespace(char *str)
 {
 	int i;
+
 	for (i = 0; str[i]; i++)
 	{
 		if (str[i] != ' ' && str[i] != '\t')
 		{
-			return false;
+			return (false);
 		}
 	}
-	return true;
+	return (true);
 }

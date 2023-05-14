@@ -1,18 +1,6 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include "utils.h"
 #include "main.h"
 
 #define INITIAL_BUFFER_SIZE 1024
-#define INPUT_EOF ((char *)-1)
-
-extern char **environ;
 
 /**
  * read_input - Prompts the user and gets their input
@@ -66,6 +54,8 @@ char *read_input(void)
  * execute_command - Executes a command received from the user with execve
  * @command: The command to execute
  *
+ * @environ: The environment variables passed to the new process
+ *
  * Description: This function forks a new process and executes the
  *              provided command in the child process. It waits
  *              for the child process to finish execution before
@@ -74,7 +64,7 @@ char *read_input(void)
  * Return: This is a void function so it does not return a value.
  *         It directly exits the program in case of an error.
  */
-void execute_command(char *command)
+void execute_command(char *command, char **environ)
 {
 	pid_t pid;
 	char *args[2];
@@ -106,6 +96,8 @@ void execute_command(char *command)
 /**
  * simple_shell_0_1 - The main function for the shell
  *
+ * @environ: The environment variables passed to the new process
+ *
  * Description: This function continually gets user input and executes
  *              the corresponding command until an error occurs or the
  *              user quits the shell. It handles memory allocation errors
@@ -113,7 +105,7 @@ void execute_command(char *command)
  *
  * Return: This is a void function so it does not return a value.
  */
-void simple_shell_0_1(void)
+void simple_shell_0_1(char **environ)
 {
 	bool status = true;
 	struct stat st;
@@ -140,6 +132,6 @@ void simple_shell_0_1(void)
 			continue;
 		}
 
-		execute_command(command);
+		execute_command(command, environ);
 	}
 }

@@ -3,13 +3,20 @@
 /**
  * main - Entry point
  *
- * Description: Prints "Hello World!" to the standard output
+ * @argc: The number of command line arguments
+ * @argv: The command line arguments
+ * @envp: The environment variables
+ *
+ * Description: Runs a simple shell script
  *
  * Return: Always 0 (Success)
  */
 
-int main(void)
+int main(int argc, char **argv, char **envp)
 {
-	simple_shell_0_1();
+	(void)argc;
+	(void)argv;
+
+	simple_shell_0_1(envp);
 	return (0);
 }
