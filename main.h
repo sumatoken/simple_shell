@@ -11,8 +11,7 @@
 #include <sys/stat.h>
 #include "utils.h"
 
-#define INITIAL_BUFFER_SIZE 1024
-
 void simple_shell_0_1(char **environ);
+void simple_shell_0_2(char **environ);
 
 #endif

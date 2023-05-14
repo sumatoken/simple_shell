@@ -17,6 +17,6 @@ int main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 
-	simple_shell_0_1(envp);
+	simple_shell_0_2(envp);
 	return (0);
 }
