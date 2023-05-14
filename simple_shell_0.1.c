@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include "utils.h"
 #include "main.h"
 
@@ -109,7 +111,7 @@ void execute_command(char *command)
 void simple_shell_0_1(void)
 {
 	bool status = true;
-
+	struct stat st;
 	while (status == true)
 	{
 		char *command = read_input();
@@ -121,6 +123,13 @@ void simple_shell_0_1(void)
 
 		if (_is_whitespace(command))
 		{
+			free(command);
+			continue;
+		}
+
+		if (stat(command, &st) == -1)
+		{
+			printf("%s: NOT FOUND\n", command);
 			free(command);
 			continue;
 		}
