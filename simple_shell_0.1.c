@@ -32,7 +32,7 @@ char *read_input(void)
 	{
 		printf("Failed to read user input.\n");
 		free(command);
-		return NULL;
+		return (NULL);
 	}
 
 	if (read_bytes > 0 && command[read_bytes - 1] == '\n')
@@ -40,7 +40,7 @@ char *read_input(void)
 		command[read_bytes - 1] = '\0';
 	}
 
-	return command;
+	return (command);
 }
 /**
  * execute_command - Executes a command received from the user with execve
