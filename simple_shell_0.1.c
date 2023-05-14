@@ -15,41 +15,33 @@
  */
 char *read_input(void)
 {
-	ssize_t bytesRead;
-	char *command = malloc(INITIAL_BUFFER_SIZE);
-
-	if (command == NULL)
-	{
-		write(2, "Memory allocation failed\n", 24);
-		return (NULL);
-	}
+	ssize_t read_bytes;
+	char *command = NULL;
+	size_t input_size = 0;
 
 	write(STDOUT_FILENO, "$ ", 2);
 
-	bytesRead = read(STDIN_FILENO, command, INITIAL_BUFFER_SIZE - 1);
-	if (bytesRead > 0)
-	{
-		command[bytesRead] = '\0';
-	}
-	else if (bytesRead == 0 && command[0] == '\0')
+	read_bytes = getline(&command, &input_size, stdin);
+
+	if (read_bytes == -1 && feof(stdin))
 	{
 		free(command);
 		exit(EXIT_SUCCESS);
 	}
-	else
+	if (read_bytes == -1)
 	{
+		printf("Failed to read user input.\n");
 		free(command);
-		return (NULL);
+		return NULL;
 	}
 
-	if (_strlen(command) > 0 && command[_strlen(command) - 1] == '\n')
+	if (read_bytes > 0 && command[read_bytes - 1] == '\n')
 	{
-		command[_strlen(command) - 1] = '\0';
+		command[read_bytes - 1] = '\0';
 	}
 
-	return (command);
+	return command;
 }
-
 /**
  * execute_command - Executes a command received from the user with execve
  * @command: The command to execute
