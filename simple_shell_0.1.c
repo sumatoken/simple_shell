@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 /**
- * simple_shell - simple shell interface
+ * simple_shell_0_1 - simple shell interface
  *
  * Description: Prompts the user to input a command and executes it
  *
@@ -10,5 +10,5 @@
 
 void simple_shell_0_1(void)
 {
-    printf("simple shell\n");
+	printf("simple shell\n");
 }
