@@ -43,8 +43,10 @@ char *read_input(void)
 	return (command);
 }
 /**
- * simple_shell - simple shell interface
+ * execute_command - Executes the command
  *
+ * @environ: The environment variables passed to the new process
+ * @command: The command to execute
  * Description: This function forks a new process and executes the
  *              provided command in the child process. It waits
  *              for the child process to finish execution before
