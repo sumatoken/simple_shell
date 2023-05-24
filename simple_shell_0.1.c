@@ -19,7 +19,7 @@ char *read_input(void)
 	char *command = NULL;
 	size_t input_size = 0;
 
-	write(STDOUT_FILENO, "$ ", 2);
+	write(STDOUT_FILENO, "$", 1);
 
 	read_bytes = getline(&command, &input_size, stdin);
 
