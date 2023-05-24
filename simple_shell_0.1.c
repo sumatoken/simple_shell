@@ -98,5 +98,31 @@ void execute_command(char *command, char **environ)
  */
 void simple_shell_0_1(char **environ)
 {
-	printf("simple shell\n");
+	bool status = true;
+	struct stat st;
+
+	while (status == true)
+	{
+		char *command = read_input();
+
+		if (command == NULL)
+		{
+			return;
+		}
+		if (_is_whitespace(command))
+		{
+			free(command);
+			continue;
+		}
+
+		if (stat(command, &st) == -1)
+		{
+			write(STDOUT_FILENO, command, _strlen(command));
+			write(STDOUT_FILENO, ": NOT FOUND\n", 12);
+			free(command);
+			continue;
+		}
+
+		execute_command(command, environ);
+	}
 }
