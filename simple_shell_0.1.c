@@ -119,7 +119,7 @@ void simple_shell_0_1(char **environ)
 		if (stat(command, &st) == -1)
 		{
 			write(STDOUT_FILENO, command, _strlen(command));
-			write(STDOUT_FILENO, ": NOT FOUND\n", 12);
+			write(STDOUT_FILENO, ": command not found\n", 12);
 			free(command);
 			continue;
 		}
