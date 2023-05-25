@@ -19,11 +19,9 @@ char *read_input(void)
 	char *command = NULL;
 	size_t input_size = 0;
 
-	write(STDOUT_FILENO, "#cisfun$ ", 10);
-
 	read_bytes = getline(&command, &input_size, stdin);
 
-	if (read_bytes == -1 && feof(stdin))
+	if (read_bytes == -1 || feof(stdin))
 	{
 		free(command);
 		exit(EXIT_SUCCESS);
@@ -117,7 +115,6 @@ void simple_shell_0_1(char **environ)
 
 		if (stat(command, &st) == -1)
 		{
-			write(STDOUT_FILENO, command, _strlen(command));
 			write(STDOUT_FILENO, "./shell: No such file or directory\n", 36);
 			free(command);
 			continue;
