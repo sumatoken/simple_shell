@@ -1,18 +1,5 @@
 #include <stdbool.h>
 #include "utils.h"
-/**
- * _strlen - counts the length of the string
- * @str: string
- * Return: length of the string
- */
-size_t _strlen(char *str)
-{
-	size_t length = 0;
-
-	while (*str++)
-		length++;
-	return (length);
-}
 
 /**
  * _is_whitespace - Check if a string equals only whitespaces
